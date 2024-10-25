@@ -39,106 +39,83 @@
      POST /rules/combine: Combine multiple rules into a single rule.
 
 
-    For Creating a Rule, enter:
-json
-Copy code
-{
-    "rule_string": "(age > 30 AND department = 'Sales') OR (salary < 50000)"
-}
-For Evaluating a Rule, enter:
-json
-Copy code
-{
-    "ast": {
-        "type": "operator",
-        "left": {
-            "type": "operand",
-            "value": {
-                "attribute": "age",
-                "operator": ">",
-                "value": "30"
+    
+## Creating a Rule
+
+To create a rule, send a POST request to the `/rules` endpoint with the following JSON body:
+
+### Request
+- **Request Type**: `POST`
+- **URL**: `http://localhost:8000/rules`
+- **Body**:
+    ```json
+    {
+        "rule_string": "(age > 30 AND department = 'Sales') OR (salary < 50000)"
+    }
+    ```
+
+## Evaluating a Rule
+
+To evaluate a rule, send a POST request to the `/rules/evaluate` endpoint with the following JSON body:
+
+### Request
+- **Request Type**: `POST`
+- **URL**: `http://localhost:8000/rules/evaluate`
+- **Body**:
+    ```json
+    {
+        "ast": {
+            "type": "operator",
+            "left": {
+                "type": "operand",
+                "value": {
+                    "attribute": "age",
+                    "operator": ">",
+                    "value": "30"
+                }
+            },
+            "right": {
+                "type": "operand",
+                "value": {
+                    "attribute": "department",
+                    "operator": "=",
+                    "value": "Sales"
+                }
             }
         },
-        "right": {
-            "type": "operand",
-            "value": {
-                "attribute": "department",
-                "operator": "=",
-                "value": "Sales"
-            }
+        "user_data": {
+            "age": 35,
+            "department": "Sales",
+            "salary": 40000
         }
-    },
-    "user_data": {
-        "age": 35,
-        "department": "Sales",
-        "salary": 40000
     }
-}
-For Combining Rules, enter:
-json
-Copy code
-[
-    "rule_id_1",
-    "rule_id_2"
-]
-Send the Request:
+    ```
 
-Click the Send button to send your request to the API.
-View the Response:
+## Combining Rules
 
-Postman will display the response received from the server in the section below. You can view the status code, response body, and headers.
-Example Requests in Postman
-Create a Rule:
+To combine rules, send a POST request to the `/rules/combine` endpoint with an array of rule IDs.
 
-Request Type: POST
-URL: http://localhost:8000/rules
-Body:
-json
-Copy code
-{
-    "rule_string": "(age > 30 AND department = 'Sales') OR (salary < 50000)"
-}
-Evaluate a Rule:
+### Request
+- **Request Type**: `POST`
+- **URL**: `http://localhost:8000/rules/combine`
+- **Body**:
+    ```json
+    [
+        "rule_id_1",
+        "rule_id_2"
+    ]
+    ```
 
-Request Type: POST
-URL: http://localhost:8000/rules/evaluate
-Body:
-json
-Copy code
-{
-    "ast": {
-        "type": "operator",
-        "left": {
-            "type": "operand",
-            "value": {
-                "attribute": "age",
-                "operator": ">",
-                "value": "30"
-            }
-        },
-        "right": {
-            "type": "operand",
-            "value": {
-                "attribute": "department",
-                "operator": "=",
-                "value": "Sales"
-            }
-        }
-    },
-    "user_data": {
-        "age": 35,
-        "department": "Sales",
-        "salary": 40000
-    }
-}
-Combine Rules:
+## Example Requests in Postman
 
-Request Type: POST
-URL: http://localhost:8000/rules/combine
-Body:
-json
-Copy code
-[
-    "rule_id_1",
-    "rule_id_2"
-]
+### Create a Rule
+1. **Click** the **Send** button to send your request to the API.
+2. **View** the response received from the server in the section below. You can view the status code, response body, and headers.
+
+### Evaluate a Rule
+1. **Click** the **Send** button to send your request to the API.
+2. **View** the response received from the server in the section below. You can view the status code, response body, and headers.
+
+### Combine Rules
+1. **Click** the **Send** button to send your request to the API.
+2. **View** the response received from the server in the section below. You can view the status code, response body, and headers.
