@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rule Engine UI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Rule Engine</h1>
+
+        <h2>Create Rule</h2>
+        <div class="form-group">
+            <label for="ruleString">Rule String</label>
+            <input type="text" class="form-control" id="ruleString" placeholder="Enter rule string">
+        </div>
+        <button id="createRuleBtn" class="btn btn-primary">Create Rule</button>
+
+        <h2 class="mt-4">Evaluate Rule</h2>
+        <div class="form-group">
+            <label for="ruleId">Rule ID</label>
+            <input type="text" class="form-control" id="ruleId" placeholder="Enter rule ID">
+            <label for="userData">User Data (JSON)</label>
+            <textarea class="form-control" id="userData" placeholder='{"age": 30, "department": "Sales", "salary": 60000, "experience": 3}' rows="3"></textarea>
+        </div>
+        <button id="evaluateRuleBtn" class="btn btn-primary">Evaluate Rule</button>
+
+        <h2 class="mt-4">Combine Rules</h2>
+        <div class="form-group">
+            <label for="rulesToCombine">Rules (comma separated IDs)</label>
+            <input type="text" class="form-control" id="rulesToCombine" placeholder="Enter rule IDs to combine">
+        </div>
+        <button id="combineRulesBtn" class="btn btn-primary">Combine Rules</button>
+
+        <h2 class="mt-4">Output</h2>
+        <div id="output" class="alert alert-info" style="display: none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
